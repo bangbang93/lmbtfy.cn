@@ -1,0 +1,93 @@
+.container{
+    height: 500px;
+    width: 100%;
+    text-align: center;
+}
+#kw {
+    width: 521px;
+    height: 20px;
+    padding: 9px 7px;
+    font: 16px arial;
+    border: 1px solid #d8d8d8;
+    border-bottom: 1px solid #ccc;
+    vertical-align: top;
+    outline: none;
+    margin-right: 0;
+}
+#kw:focus{
+    border-top: 1px solid #38f !important;
+    border-left: 1px solid #38f !important;
+    border-bottom: 1px solid #38f !important;
+}
+.btn {
+    cursor: pointer;
+    width: 102px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    background-color: #38f;
+    font-size: 16px;
+    color: white;
+    margin-left: -10px;
+}
+.logo {
+    height: 100px;
+    margin-bottom: -20px;
+}
+#instructions {
+    display: inline-block;
+    margin-top: 40px;
+    min-width: 250px;
+    padding: 1em 2em;
+    color: #999999;
+    background-color: #dcefff;
+    border: 1px solid #b3b7ff;
+    font-size: 1.1em;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fff), color-stop(100%, rgba(255, 255, 255, 0)));
+    background-image: -webkit-linear-gradient(#fff, rgba(255, 255, 255, 0) 100%);
+    background-image: -moz-linear-gradient(#fff, rgba(255, 255, 255, 0) 100%);
+    background-image: -o-linear-gradient(#fff, rgba(255, 255, 255, 0) 100%);
+    background-image: linear-gradient(#ffffff, rgba(255, 255, 255, 0) 100%);
+}
+.link {
+    margin-top: 100px;
+    display: block;
+}
+a.link_button {
+    display: inline-block;
+    width: 60px;
+    height: 20px;
+    line-height: 20px;
+    margin: 0 2px;
+    background-color: #1532c9;
+    color: white;
+    text-align: center;
+    font-size: 0.8em;
+    text-decoration: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#arrow{
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+footer{
+    color: gray;
+    text-align: center;
+}
+footer a{
+    color: gray;
+    text-decoration: none;
+
+}
