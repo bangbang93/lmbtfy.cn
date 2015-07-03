@@ -6,9 +6,13 @@ $(document).ready(function (){
     var clip = new ZeroClipboard($('#copy'));
     $('#search').on('click', function (){
         var link = window.location.origin + window.location.pathname + '?' + encodeURIComponent($('#kw').val());
-        $('#link').show();
-        $('#instructions').text('复制下面的地址');
-        $('#lmbtfyLink').val(link).focus().select();
+        $.get('http://auth.bangbang93.com/sina/short_url.php?url=' + link, function (data) {
+            data = JSON.parse(data);
+            link = data[0]['url_short'];
+            $('#link').show();
+            $('#instructions').text('复制下面的地址');
+            $('#lmbtfyLink').val(link).focus().select();
+        });
     });
     var $container = $('.container');
     $container.on('click', '#go', function (){
