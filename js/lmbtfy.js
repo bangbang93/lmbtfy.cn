@@ -21,14 +21,14 @@ $(document).ready(function (){
             window.location = link;
         }
     });
-    $('#kw').on('keydown', function (e) {
+    var $kw = $('#kw');
+    $kw.on('keydown', function (e) {
         if (e.keyCode == 13){
             $('#search').trigger('click');
         }
     });
     if (!!window.location.search){
         var kw = decodeURIComponent(window.location.search.substr(1));
-        var $kw = $('#kw');
         var $instructions = $('#instructions');
         var $arrow = $('#arrow');
         setTimeout(function (){
