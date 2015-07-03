@@ -7,7 +7,9 @@ $(document).ready(function (){
     $('#search').on('click', function (){
         var link = window.location.origin + window.location.pathname + '?' + encodeURIComponent($('#kw').val());
         $.get('http://auth.bangbang93.com/sina/short_url.php?url=' + link, function (data) {
-            link = data['url_short'];
+            if (data){
+                link = data['url_short'];
+            }
             $('#link').show();
             $('#instructions').text('复制下面的地址');
             $('#lmbtfyLink').val(link).focus().select();
