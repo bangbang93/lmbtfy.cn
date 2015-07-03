@@ -5,7 +5,7 @@ $(document).ready(function (){
     ZeroClipboard.config({swfPath: '//cdnjscn.b0.upaiyun.com/libs/zeroclipboard/2.1.6/ZeroClipboard.swf'});
     var clip = new ZeroClipboard($('#copy'));
     $('#search').on('click', function (){
-        var link = window.location.protocol + '//' + window.location.host + '/?' + encodeURIComponent($('#kw').val());
+        var link = window.location.origin + window.location.pathname + '?' + encodeURIComponent($('#kw').val());
         $('#link').show();
         $('#instructions').text('复制下面的地址');
         $('#lmbtfyLink').val(link).focus().select();
@@ -15,6 +15,11 @@ $(document).ready(function (){
         var link = $('#lmbtfyLink').val();
         if (!!link){
             window.location = link;
+        }
+    });
+    $('#kw').on('keydown', function (e) {
+        if (e.keyCode == 13){
+            $('#search').trigger('click');
         }
     });
     if (!!window.location.search){
