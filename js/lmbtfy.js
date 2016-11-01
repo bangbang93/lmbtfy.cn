@@ -6,7 +6,7 @@ $(document).ready(function (){
     var clip = new ZeroClipboard($('#copy'));
     $('#search').on('click', function (){
         var link = window.location.origin + window.location.pathname + '?' + encodeURIComponent($('#kw').val());
-        $.get('http://auth.bangbang93.com/sina/short_url.php?url=' + link, function (data) {
+        $.get('//auth.bangbang93.com/sina/short_url.php?url=' + link, function (data) {
             if (data){
                 link = data['url_short'];
             }
