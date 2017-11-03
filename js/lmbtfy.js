@@ -20,7 +20,7 @@ $(document).ready(function (){
             $('#instructions').text('复制下面的地址');
             $('#lmbtfyLink').val(link).focus().select();
           }
-        }, );
+        });
     });
     var $container = $('.container');
     $container.on('click', '#go', function (){
@@ -31,7 +31,7 @@ $(document).ready(function (){
     });
     var $kw = $('#kw');
     $kw.on('keydown', function (e) {
-        if (e.keyCode == 13){
+        if (e.keyCode === 13){
             $('#search').trigger('click');
         }
     });
