@@ -2,18 +2,25 @@
  * Created by bangbang on 14/10/10.
  */
 $(document).ready(function (){
-    ZeroClipboard.config({swfPath: '//cdnjscn.b0.upaiyun.com/libs/zeroclipboard/2.1.6/ZeroClipboard.swf'});
-    var clip = new ZeroClipboard($('#copy'));
+  new Clipboard('#copy')
     $('#search').on('click', function (){
         var link = window.location.origin + window.location.pathname + '?' + encodeURIComponent($('#kw').val());
-        $.get('//api.bangbang93.com/lmbtfy/short_url?url=' + link, function (data) {
+        $.ajax({
+          url: '//api.bangbang93.com/lmbtfy/short_url?url=' + link,
+          success: function (data) {
             if (data){
-                link = data['url_short'];
+              link = data['url_short'];
             }
             $('#link').show();
             $('#instructions').text('复制下面的地址');
             $('#lmbtfyLink').val(link).focus().select();
-        });
+          },
+          error: function () {
+            $('#link').show();
+            $('#instructions').text('复制下面的地址');
+            $('#lmbtfyLink').val(link).focus().select();
+          }
+        }, );
     });
     var $container = $('.container');
     $container.on('click', '#go', function (){
