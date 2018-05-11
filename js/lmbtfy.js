@@ -6,7 +6,7 @@ $(document).ready(function (){
     $('#search').on('click', function (){
         var link = window.location.origin + window.location.pathname + '?' + encodeURIComponent($('#kw').val());
         $.ajax({
-          url: '//api.bangbang93.com/lmbtfy/short_url?url=' + link,
+          url: '//api.bangbang93.com/lmbtfy/short_url?url=' + encodeURIComponent(link),
           success: function (data) {
             if (data){
               link = data['url_short'];
