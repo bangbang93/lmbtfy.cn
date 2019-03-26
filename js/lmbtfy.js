@@ -4,7 +4,7 @@
 $(document).ready(function (){
   new Clipboard('#copy')
     $('#search').on('click', function (){
-        var link = window.location.origin + window.location.pathname + '?' + encodeURIComponent($('#kw').val());
+        var link = window.location.origin + window.location.pathname + '?q=' + encodeURIComponent($('#kw').val());
         $.ajax({
           url: '//api.bangbang93.com/lmbtfy/short_url?url=' + encodeURIComponent(link),
           success: function (data) {
@@ -36,7 +36,18 @@ $(document).ready(function (){
         }
     });
     if (!!window.location.search){
-        var kw = decodeURIComponent(window.location.search.substr(1));
+        var search = window.location.search
+        var kw
+        if (URLSearchParams in window) {
+          var s = new URLSearchParams(search)
+          kw = s.get('q')
+        } else {
+          var match = window.location.search.match(/q=(.*)(&|$)/)
+          if (match) {
+            kw = decodeURIComponent(match[1]);
+          }
+        }
+        if (!kw) kw = decodeURIComponent(match[1])
         var $instructions = $('#instructions');
         var $arrow = $('#arrow');
         setTimeout(function (){
