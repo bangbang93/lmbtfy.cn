@@ -42,7 +42,7 @@ $(document).ready(function (){
           var s = new URLSearchParams(search)
           kw = s.get('q')
         } else {
-          var match = window.location.search.match(/q=(.*)(&|$)/)
+          var match = window.location.search.match(/q=(.*?)(?:&|$)/)
           if (match) {
             kw = decodeURIComponent(match[1]);
           }
