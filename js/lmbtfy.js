@@ -38,7 +38,7 @@ $(document).ready(function (){
     if (!!window.location.search){
         var search = window.location.search
         var kw
-        if (URLSearchParams in window) {
+        if (typeof URLSearchParams !== 'undefined') {
           var s = new URLSearchParams(search)
           kw = s.get('q')
         } else {
