@@ -75,7 +75,7 @@ $(document).ready(function (){
                         }, 1000, function () {
                             $instructions.html('<strong>这对你而言就是这么困难么？</strong>');
                             setTimeout(function (){
-                                window.location = 'http://www.baidu.com/s?tn=lmbtfy.cn&ch=3&ie=utf-8&wd=' + encodeURIComponent(kw);
+                                window.location = 'http://www.baidu.com/s?ie=utf-8&wd=' + encodeURIComponent(kw);
                             }, 2000);
                         })
                     }
