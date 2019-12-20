@@ -1,5 +1,4 @@
 RewriteEngine On
-RewriteCond %{REQUEST_URI} ^/s/(.*)$ [NC]
 RewriteRule ^s/.*$ /s/index.php [L]
 
 RewriteCond %{HTTP:KERSSL} !on
