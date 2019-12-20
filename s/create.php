@@ -1,6 +1,5 @@
 <?php
 
-use PUGX\Shortid\Factory;
 use PUGX\Shortid\Shortid;
 
 $pdo = new PDO('mysql:host=localhost;dbname='.MYSQL_DATABASE, MYSQL_USERNAME, MYSQL_PASSWORD);
