@@ -1,6 +1,7 @@
 RewriteEngine On
 RewriteCond %{REQUEST_URI} ^s/(.*)$ [NC]
 RewriteRule ^s/(.*)$ /s/index.php [L]
+
 RewriteCond %{HTTP:KERSSL} !on
 RewriteRule ^(.*)$ https://lmbtfy.cn/$1 [R,L]
 Header set Strict-Transport-Security "max-age=31536000"
