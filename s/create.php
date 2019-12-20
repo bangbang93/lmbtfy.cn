@@ -6,6 +6,7 @@ use PUGX\Shortid\Shortid;
 $pdo = new PDO('mysql:host=localhost;dbname='.MYSQL_DATABASE, MYSQL_USERNAME, MYSQL_PASSWORD);
 
 $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : null;
+$keyword = trim($keyword);
 if (empty($keyword)) {
     header('Location: /');
     die();
