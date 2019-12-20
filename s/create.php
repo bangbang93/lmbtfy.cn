@@ -1,5 +1,6 @@
 <?php
 
+use PUGX\Shortid\Factory;
 use PUGX\Shortid\Shortid;
 
 $pdo = new PDO('mysql:host=localhost;dbname='.MYSQL_DATABASE, MYSQL_USERNAME, MYSQL_PASSWORD);
@@ -20,7 +21,10 @@ header('Content-Type: application/json');
 if ($result !== false) {
     echo json_encode($result);
 } else {
-    $id = Shortid::generate(10);
+    $factory = new Factory();
+    $factory->setLength(10);
+    Shortid::setFactory($factory);
+    $id = Shortid::generate();
     $prepare = $pdo->prepare('INSERT INTO short_url (uniqId, keyword) VALUES (:id, :keyword)');
     $prepare->execute([':id' => $id, ':keyword' => $keyword]);
     echo json_encode(['uniqId' => $id, 'keyword' => $keyword]);
