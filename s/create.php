@@ -21,10 +21,7 @@ header('Content-Type: application/json');
 if ($result !== false) {
     echo json_encode($result);
 } else {
-    $factory = new Factory();
-    $factory->setLength(10);
-    Shortid::setFactory($factory);
-    $id = Shortid::generate();
+    $id = Shortid::generate(10);
     $prepare = $pdo->prepare('INSERT INTO short_url (uniqId, keyword) VALUES (:id, :keyword)');
     $prepare->execute([':id' => $id, ':keyword' => $keyword]);
     echo json_encode(['uniqId' => $id, 'keyword' => $keyword]);
