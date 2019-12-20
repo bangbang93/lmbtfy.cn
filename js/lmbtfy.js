@@ -4,12 +4,20 @@
 $(document).ready(function (){
   new Clipboard('#copy')
     $('#search').on('click', function (){
-        var link = window.location.origin + window.location.pathname + '?q=' + encodeURIComponent($('#kw').val());
+        var keyword = $('#kw').val();
+        if (keyword === '') {
+            $('#kw').focus();
+            return;
+        }
+        var kw = encodeURIComponent($('#kw').val());
+        var link = window.location.origin + window.location.pathname + '?q=' + kw;
         $.ajax({
-          url: '//api.bangbang93.com/lmbtfy/short_url?url=' + encodeURIComponent(link),
+          url: '/s/create',
+          data: {keyword: keyword},
+          method: 'post',
           success: function (data) {
             if (data){
-              link = data['url_short'];
+              link = location.origin + '/s/' + data['uniqId'];
             }
             $('#link').show();
             $('#instructions').text('复制下面的地址');
