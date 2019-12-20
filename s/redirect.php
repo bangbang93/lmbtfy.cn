@@ -15,11 +15,12 @@ if (!$prepare->execute([':id' => $id])) {
     die('database error');
 }
 
-$result = $prepare->fetch(PDO::FETCH_ASSOC);
-if (count($result) === 0) {
+if ($prepare->rowCount() === 0) {
     header('Location: /');
     die();
 } else {
+    $result = $prepare->fetch(PDO::FETCH_ASSOC);
+
     header('Location: /?q='. urlencode($result['keyword']));
     die();
 }

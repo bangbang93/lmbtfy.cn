@@ -12,7 +12,7 @@ $(document).ready(function (){
         var kw = encodeURIComponent($('#kw').val());
         var link = window.location.origin + window.location.pathname + '?q=' + kw;
         $.ajax({
-          url: '/s/create',
+          url: '/s/index.php/create',
           data: {keyword: keyword},
           method: 'post',
           success: function (data) {
