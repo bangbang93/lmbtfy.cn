@@ -1,5 +1,5 @@
 <?php
-
+die('123');
 require_once __DIR__.'/../vendor/autoload.php';
 
 $url = $_SERVER['REQUEST_URI'];
