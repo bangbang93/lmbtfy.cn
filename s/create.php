@@ -11,18 +11,25 @@ if (empty($keyword)) {
     die();
 }
 
-$prepare = $pdo->prepare('SELECT * from short_url where keyword = :keyword LIMIT 1');
+$stmt = $pdo->prepare('SELECT * from short_url where keyword = :keyword LIMIT 1');
 
-if (!$prepare->execute([':keyword' => $keyword])) {
+if (!$stmt->execute([':keyword' => $keyword])) {
     die('database error');
 }
-$result = $prepare->fetch(PDO::FETCH_ASSOC);
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
 header('Content-Type: application/json');
 if ($result !== false) {
     echo json_encode($result);
 } else {
-    $id = Shortid::generate(10);
-    $prepare = $pdo->prepare('INSERT INTO short_url (uniqId, keyword) VALUES (:id, :keyword)');
-    $prepare->execute([':id' => $id, ':keyword' => $keyword]);
+    do {
+        $id = Shortid::generate(10);
+        $stmt = $pdo->prepare('SELECT * from short_url where uniqId = :id');
+        if (!$stmt->execute()) {
+            die('database error');
+        }
+    } while($stmt->rowCount() > 0);
+
+    $stmt = $pdo->prepare('INSERT INTO short_url (uniqId, keyword) VALUES (:id, :keyword)');
+    $stmt->execute([':id' => $id, ':keyword' => $keyword]);
     echo json_encode(['uniqId' => $id, 'keyword' => $keyword]);
 }

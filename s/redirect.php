@@ -10,16 +10,18 @@ if ($count < 1) {
 }
 $id = $matches[1];
 
-$prepare = $pdo->prepare('SELECT * from short_url where uniqId = :id LIMIT 1');
-if (!$prepare->execute([':id' => $id])) {
+$stmt = $pdo->prepare('SELECT * from short_url where uniqId = :id LIMIT 1');
+if (!$stmt->execute([':id' => $id])) {
     die('database error');
 }
 
-if ($prepare->rowCount() === 0) {
+if ($stmt->rowCount() === 0) {
     header('Location: /');
     die();
 } else {
-    $result = $prepare->fetch(PDO::FETCH_ASSOC);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $pdo->prepare('UPDATE short_url SET open = open + 1 where id = :id');
+    $stmt->execute([':id' => $result['id']]);
 
     header('Location: /?q='. urlencode($result['keyword']));
     die();
