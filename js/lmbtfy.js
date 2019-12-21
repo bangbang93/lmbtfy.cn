@@ -55,7 +55,7 @@ $(document).ready(function (){
             kw = decodeURIComponent(match[1]);
           }
         }
-        if (!kw) kw = decodeURIComponent(match[1])
+        if (!kw) kw = window.location.search
         var $instructions = $('#instructions');
         var $arrow = $('#arrow');
         setTimeout(function (){
