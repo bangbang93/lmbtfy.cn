@@ -24,7 +24,7 @@ if ($result !== false) {
     do {
         $id = Shortid::generate(10);
         $stmt = $pdo->prepare('SELECT * from short_url where uniqId = :id');
-        if (!$stmt->execute()) {
+        if (!$stmt->execute([':id' => $id])) {
             die('database error');
         }
     } while($stmt->rowCount() > 0);
