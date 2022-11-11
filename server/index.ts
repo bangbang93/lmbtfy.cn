@@ -39,7 +39,7 @@ app.post('/s/create', async (req: Request, res: Response, next: NextFunction) =>
       return res.json(url)
     }
     let id = nanoid(10)
-    while(await table().where('id', id).first()) {
+    while(await table().where('uniqId', id).first()) {
       id = nanoid(10)
     }
     await table().insert({
