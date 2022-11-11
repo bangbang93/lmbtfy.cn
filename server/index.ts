@@ -26,7 +26,7 @@ interface ITable {
   lastActivity: Date
 }
 
-const table = knex<ITable>('short_url')
+const table = () => knex<ITable>('short_url')
 
 app.post('/s/create', async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -34,18 +34,18 @@ app.post('/s/create', async (req: Request, res: Response, next: NextFunction) =>
     if (!keyword) {
       return res.redirect('/')
     }
-    let url = await table.where('keyword', keyword).first()
+    let url = await table().where('keyword', keyword).first()
     if (url) {
       return res.json(url)
     }
     let id = nanoid(10)
-    while(await table.where('id', id).first()) {
+    while(await table().where('id', id).first()) {
       id = nanoid(10)
     }
-    await table.insert({
+    await table().insert({
       uniqId: id, keyword,
     })
-    url = await table.where('uniqId', id).first()
+    url = await table().where('uniqId', id).first()
     res.json(url)
   } catch (e) {
     next(e)
@@ -55,7 +55,7 @@ app.post('/s/create', async (req: Request, res: Response, next: NextFunction) =>
 app.get('/s/:id', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const uniqId = req.params.id
-    const url = await table.where('uniqId', uniqId).first()
+    const url = await table().where('uniqId', uniqId).first()
     if (!url) {
       return res.redirect('/')
     } else {
