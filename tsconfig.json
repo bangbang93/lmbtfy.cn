@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "es2020",
+    "sourceMap": true,
+    "lib": ["es2020"],
+    "sourceRoot": "./server",
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
