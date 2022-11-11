@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser'
 import express, {NextFunction, Request, Response} from 'express'
-import {nanoid} from 'nanoid'
+import nanoid from 'nanoid'
 import Knex from 'knex'
 import { join } from 'path'
 
