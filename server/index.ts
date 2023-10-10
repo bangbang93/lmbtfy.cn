@@ -1,22 +1,26 @@
 import bodyParser from 'body-parser'
+import {config} from 'dotenv'
 import express, {NextFunction, Request, Response} from 'express'
-import nanoid from 'nanoid'
 import Knex from 'knex'
-import { join } from 'path'
+import nanoid from 'nanoid'
+import {join} from 'path'
+
+config()
 
 const app = express()
 const knex = Knex({
   client: 'mysql2',
   connection: {
-    host: 'localhost',
-    user: 'lmbtfy',
-    password: 'lmbtfy',
-    database: 'lmbtfy',
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USERNAME,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
   }
 })
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.static(join(__dirname, '../public')))
 
 interface ITable {
   id: number
