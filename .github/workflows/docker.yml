@@ -36,8 +36,8 @@ jobs:
           IMAGE_NAME: bangbang93-docker.pkg.coding.net/mirrors/bangbang93/lmbtfy-cn
         with:
           push: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha,scope=latest
+          cache-to: type=gha,mode=max,scope=latest
           tags: |
             ${{ env.IMAGE_NAME }}:latest
             ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
