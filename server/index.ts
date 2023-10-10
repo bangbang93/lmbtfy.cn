@@ -20,7 +20,6 @@ const knex = Knex({
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(express.static(join(__dirname, '../public')))
 
 interface ITable {
   id: number
