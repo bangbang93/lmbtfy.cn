@@ -2,7 +2,7 @@ import bodyParser from 'body-parser'
 import {config} from 'dotenv'
 import express, {NextFunction, Request, Response} from 'express'
 import Knex from 'knex'
-import nanoid from 'nanoid'
+import {nanoid} from 'nanoid'
 import {join} from 'path'
 
 config()
