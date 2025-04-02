@@ -21,7 +21,7 @@ jobs:
       - name: Login to coding registry
         uses: docker/login-action@v2
         with:
-          registry: bangbang93-docker.pkg.coding.net
+          registry: registry.cn-hangzhou.aliyuncs.com
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v4
         env:
           IMAGE_TAG: ${{ env.GIT_TAG }}
-          IMAGE_NAME: bangbang93-docker.pkg.coding.net/registry/bangbang93/lmbtfy-cn
+          IMAGE_NAME: registry.cn-hangzhou.aliyuncs.com/bangbang93/lmbtfy-cn
         with:
           push: true
           cache-from: type=gha,scope=latest
