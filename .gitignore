@@ -1,4 +1,5 @@
 .idea/
+.omo/
 
 /vendor/
 /node_modules/
